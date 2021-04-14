@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+
+@model Inlamningsuppgift2.Models.Kund
+
+<form id="form" asp-controller="UserManager" asp-action="Update" method="post">
+    <input type="hidden" asp-for="KundId" />
+
+    <label asp-for="Namn"></label>
+    <input type="text" asp-for="Namn" />
+    <span asp-validation-for="Namn"></span>
+    <br />
+
+    <label asp-for="Gatuadress"></label>
+    <input type="text" asp-for="Gatuadress" />
+    <span asp-validation-for="Gatuadress"></span>
+    <br />
+
+    <label asp-for="Postnr"></label>
+    <input type="number" asp-for="Postnr" />
+    <span asp-validation-for="Postnr"></span>
+    <br />
+
+    <label asp-for="Postort"></label>
+    <input type="text" asp-for="Postort" />
+    <span asp-validation-for="Postort"></span>
+    <br />
+
+    <label asp-for="Email"></label>
+    <input type="email" asp-for="Email" />
+    <span asp-validation-for="Email"></span>
+    <br />
+
+    <label asp-for="Telefon"></label>
+    <input type="number" asp-for="Telefon" />
+    <span asp-validation-for="Telefon"></span>
+    <br />
+
+    <label asp-for="AnvandarNamn"></label>
+    <input type="text" asp-for="AnvandarNamn" />
+    <span asp-validation-for="AnvandarNamn"></span>
+    <br />
+
+    <label asp-for="Losenord"></label>
+    <input type="text" asp-for="Losenord" />
+    <span asp-validation-for="Losenord"></span>
+    <br /><br />
+
+    <p id="error-text">@ViewBag.Error</p>
+    <button type="submit">Spara ändringar</button>
+    <br />
+</form>
+

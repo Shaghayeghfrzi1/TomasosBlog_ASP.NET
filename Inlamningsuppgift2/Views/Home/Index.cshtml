@@ -1,0 +1,73 @@
+﻿@using Inlamningsuppgift2.Models
+
+@{
+    ViewData["Title"] = "Index";
+    List<MatrattTyp> matrattTyp = ViewBag.matrattTyp;
+    List<Matratt> matratt = ViewBag.matratt;
+
+
+
+}
+@inject TomasosContext _context
+
+<div style="overflow:auto">
+    <div class="menu">
+        @foreach (var item in matrattTyp)
+        {
+
+            <a asp-action="Index" asp-controller="Home" asp-route-Id="@ViewBag.Id" asp-route-matrattType="@item.MatrattTyp1">@item.Beskrivning</a>
+
+        }
+
+    </div>
+
+    <div class="main">
+        <h2>Lista över maträtter </h2><h2 style="color: antiquewhite">@ViewBag.Beskrivning</h2>
+        <table>
+
+            @if (matratt != null)
+            {
+                @foreach (var itemFood in matratt)
+                {
+                    <tr>
+                        <td>@itemFood.MatrattNamn</td>
+                        <td>
+                            @{
+                                var matrattProduct = _context.Set<MatrattProdukt>().Where(x => x.MatrattId == itemFood.MatrattId).ToList();
+                            }
+                            @foreach (var itemProduct in matrattProduct)
+                            {
+                                var ProduktNamn = _context.Produkts.Find(itemProduct.ProduktId).ProduktNamn;
+                                <span>@ProduktNamn, </span>
+                            }
+                        </td>
+                        <td>
+                            @itemFood.Pris
+                        </td>
+                        <td>
+                            <!--om man trycker på köpp och är inte loggin då går det till login sida-->
+                            @if (ViewBag.Id != null)
+                            {
+                                <a asp-action="Order" asp-controller="Order" asp-route-Id="@ViewBag.Id" asp-route-matrattId="@itemFood.MatrattId" asp-route-price="@itemFood.Pris">köpa</a>
+
+                            }
+                            else
+                            {
+                                <a asp-action="Login" asp-controller="UserManager" asp-route-Id="@ViewBag.Id" asp-route-matrattId="@itemFood.MatrattId" asp-route-price="@itemFood.Pris">köpa</a>
+
+                            }
+
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+    <div class="right">
+        <h2>Tomasos</h2>
+        <p>Detta är en webbutik - Du kan beställa din mat online</p>
+    </div>
+</div>
+

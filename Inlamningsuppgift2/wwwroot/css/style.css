@@ -1,0 +1,136 @@
+﻿body {
+}
+
+/*css för nav texter och bilden*/
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #808080;
+}
+
+nav li {
+    float: left;
+}
+
+    nav li a {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Hela sidan*/
+#main {
+    height: 70%;
+}
+
+/*Login sidan*/
+#login {
+    text-align: center;
+}
+
+#header-text {
+    color: darkred;
+}
+
+#header-name {
+    color: red;
+}
+#error-text, span{
+    color:red;
+    font-style:oblique;
+}
+input {
+    display: inline-block;
+    text-align: left;
+    float: right;
+    margin-right:65%;
+}
+
+footer {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    background-color: lightslategrey;
+    width: 100%;
+}
+
+form{
+    text-align:left;
+}
+
+
+/*For Layout Home Page Start*/
+
+* {
+    box-sizing: border-box;
+}
+
+.menu {
+    float: left;
+    width: 20%;
+    text-align: center;
+}
+
+.menu a , .right a{
+    background-color: #e5e5e5;
+    padding: 8px;
+    margin-top: 7px;
+    display: block;
+    width: 60%;
+    color: black;
+}
+
+.main {
+    background-color: #e5e5e5;
+    float: left;
+    width: 60%;
+    padding: 20px;
+    margin-top: 7px;
+    text-align: center;
+}
+
+.right {
+    float: right;
+    width: 20%;
+    padding: 0 20px;
+   
+}
+
+@media only screen and (max-width:620px) {
+    /* For mobile phones: */
+    .menu, .main, .right {
+        width: 100%;
+    }
+}
+
+
+
+/*For table Start*/
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

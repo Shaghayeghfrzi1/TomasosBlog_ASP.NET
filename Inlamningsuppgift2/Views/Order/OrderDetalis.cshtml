@@ -1,0 +1,58 @@
+﻿@using System.Xml.Schema
+@using Inlamningsuppgift2.Models
+
+@{
+    ViewData["Title"] = "OrderDetalis";
+    List<BestallningMatratt> bestallningMatratt = ViewBag.bestallningMatratt;
+}
+@inject TomasosContext _context
+
+<div style="overflow:auto">
+    <div class="menu">
+        <h2>Tomasos</h2>
+        <p>Detta är en webbutik - Du kan beställa din mat online</p>
+    </div>
+
+    <div class="main">
+        <h2>Lista över livsmedel </h2><h2 style="color: antiquewhite">@ViewBag.Beskrivning</h2>
+        <table>
+           
+            @if (bestallningMatratt != null)
+            {
+                @foreach (var item in bestallningMatratt)
+                {
+                    <tr>
+                       
+                        <td>
+                            @{
+                                var matratt = _context.Set<Matratt>().Find(item.MatrattId).MatrattNamn;
+                                int Pris = _context.Set<Matratt>().Find(item.MatrattId).Pris;
+                                int total = Pris * Convert.ToInt32(item.Antal);
+                            }
+                         @matratt
+                        </td>
+                        <td>@item.Antal</td>
+                        <td>
+                            @total
+                        </td>
+                        <td>
+                            <a asp-action="Delete" asp-controller="Order" asp-route-Id="@ViewBag.Id" asp-route-matrattId="@item.MatrattId" asp-route-BestallningId="@item.BestallningId" asp-route-price="@total">Radera</a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+    <div class="right">
+        <h2>Total belopp</h2>
+        <p>@ViewBag.bestallningTotalbelopp</p>
+        @if (ViewBag.bestallningTotalbelopp > 0)
+        {
+            <p><a asp-action="Payment" asp-controller="Order" asp-route-Id="@ViewBag.Id" asp-route-BestallningId="@ViewBag.bestallningId">Betala</a></p>
+        }
+        
+    </div>
+</div>
+

@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+
+
+@model Inlamningsuppgift2.Models.Kund
+
+<div style="overflow:auto">
+    <div class="">
+        @*<div class="right">
+            <h2>Tomasos</h2>
+            <p>Detta är en webbutik - Du kan beställa mat i denna butik</p>
+        </div>*@
+
+    </div>
+
+    <div class="main">
+      
+        <form id="form" asp-controller="UserManager" asp-action="Login" method="post">
+            
+            
+          
+            <label asp-for="AnvandarNamn"></label>
+            <input type="text" asp-for="AnvandarNamn" />
+            <span asp-validation-for="AnvandarNamn"></span>
+            <br />
+            <br />
+
+         
+            <label asp-for="Losenord"></label>
+            <input type="password" asp-for="Losenord" />
+            <span asp-validation-for="Losenord"></span>
+
+            <br /><br />
+            <p id="error-text">@ViewBag.Error</p>
+            <button type="submit">Logga in</button>
+            <!--***********************************************-->
+
+
+
+            <br /><br />
+        </form>
+        <br />
+        <p>Ny på Tomasos?</p>
+        <button><a asp-controller="UserManager" asp-action="Register">Registrera dig nu!</a></button>
+    </div>
+
+    <div class="right">
+        <h2>Tomasos</h2>
+        <p>Detta är en webbutik - Du kan beställa din mat online</p>
+    </div>
+</div>
+
+
+
